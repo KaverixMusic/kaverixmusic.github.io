@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaverix Music</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .music-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Start position for animation */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .music-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .music-item.visible {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* Move to original position */
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="music-container">
+        <h1>Kaverix Music Releases</h1>
+
+        <div class="music-item">
+            <img src="https://i.ibb.co/FYjsx90/midnighthaze.jpg" alt="Midnight Haze Cover">
+            <div>
+                <h2>midnight haze</h2>
+                <p>Release Date: August 12th, 2024</p>
+            </div>
+        </div>
+
+        <div class="music-item">
+            <img src="https://i.ibb.co/bNRMLj3/latenight.jpg" alt="Late Night Cover">
+            <div>
+                <h2>late night</h2>
+                <p>Release Date: September 22nd, 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to add 'visible' class to items when they are in view
+        const musicItems = document.querySelectorAll('.music-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        musicItems.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
