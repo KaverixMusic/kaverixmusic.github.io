@@ -3,7 +3,7 @@
 @import('./fonts/basteleur/Basteleur-Moonlight.ttf');
 
 body {
-  background-color: black;
+  background-color: gray;
   font-family: 'Inter', sans-serif; 
   color: white;
 }
